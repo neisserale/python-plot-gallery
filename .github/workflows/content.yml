@@ -1,0 +1,54 @@
+# Python side: lint, format and tests of the pipeline.
+# The `content` job (uv run gallery check) is added in Phase 2.
+name: content
+
+on:
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'pipeline/**'
+      - 'generated/**'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - '.python-version'
+      - '.github/workflows/content.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'content/**'
+      - 'pipeline/**'
+      - 'generated/**'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - '.python-version'
+      - '.github/workflows/content.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: content-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up uv (installs Python from .python-version)
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install the locked environment
+        run: uv sync --locked
+
+      - name: Lint
+        run: uv run ruff check
+
+      - name: Check formatting
+        run: uv run ruff format --check
+
+      - name: Test
+        run: uv run pytest

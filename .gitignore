@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Pipeline scratch space (sandboxes, image diffs)
+.gallery/
+
+# Website assets copied at build time by web/scripts/sync-assets.mjs
+web/public/assets/
+
+# Editors and OS
+.idea/
+.DS_Store
+Thumbs.db

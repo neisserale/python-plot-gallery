@@ -1,0 +1,17 @@
+Content license
+
+Copyright (c) 2026 neisserale
+
+Except where otherwise noted, the written content and the rendered images of
+Plot Gallery (plot metadata and descriptions in content/plots/, notebook prose,
+documentation in docs/, and the images in generated/plots/) are licensed under
+the Creative Commons Attribution 4.0 International License (CC BY 4.0).
+
+Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
+Summary:         https://creativecommons.org/licenses/by/4.0/
+
+Source code (including plot.py files, notebook code cells, the pipeline and
+the website) is licensed under the MIT License; see LICENSE.
+
+Datasets in content/datasets/ are not covered by this license. Each dataset
+keeps its own license, declared in its dataset.yaml.
